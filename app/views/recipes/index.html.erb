@@ -1,0 +1,26 @@
+<h1>Recipes#index</h1>
+
+
+
+<% if @recipes == nil %>
+
+<p>No recipes found for that search term. </p> 
+
+<% else %>
+
+	<table border="1">
+		<tr>
+			<th>Thumbnail</th>
+			<th>Title</th>
+			<th>Social Rank</th>
+		</tr>
+		<% @recipes.each do |recipe| %>
+			<tr class=<%= cycle('even','odd') %>>
+				<td><%= image_tag(recipe["f2f_url"],href:recipes["source_url"])%></td>
+				<td><%= link_to(recipes["source_url"],name:recipe["title"]) %></td>
+				<td><%= recipe["social_rank"] %></td>
+			</tr>
+		<% end %>
+	</table>
+
+<% end %>
